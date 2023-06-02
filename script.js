@@ -12,7 +12,7 @@ function getComputerChoice (){
 let playerPoints=0;
 let compPoints=0;
 
-function theGame (computerSelection, playerSelection) {
+function playRound (computerSelection, playerSelection) {
     if (computerSelection==="Rock" && (playerSelection==="Rock" || playerSelection==="rock" || playerSelection==="ROCK")){
         return "A draw";
     } else if (computerSelection==="Rock" && (playerSelection==="Paper" || playerSelection==="paper" || playerSelection==="PAPER")){
@@ -49,7 +49,7 @@ function theGame (computerSelection, playerSelection) {
     
 }
 
-function rounds(){
+function game(){
     let roundOne= theGame (getComputerChoice(), prompt("Please enter", ""));
         console.log (roundOne);
     let roundTwo= theGame (getComputerChoice(), prompt("Please enter", ""));
