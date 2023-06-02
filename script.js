@@ -8,7 +8,7 @@ function getComputerChoice (){
         return "Scissors";
     }   
 } 
-
+let playerSelection="";
 let playerPoints=0;
 let compPoints=0;
 
@@ -49,28 +49,23 @@ function playRound (computerSelection, playerSelection) {
     
 }
 
-function game(){
-    let roundOne= theGame (getComputerChoice(), prompt("Please enter", ""));
-        console.log (roundOne);
-    let roundTwo= theGame (getComputerChoice(), prompt("Please enter", ""));
-        console.log (roundTwo);
-    let roundThree= theGame (getComputerChoice(), prompt("Please enter", ""));
-        console.log (roundThree);
-    let roundFour= theGame (getComputerChoice(), prompt("Please enter", ""));
-        console.log (roundFour);
-    let roundFive= theGame (getComputerChoice(), prompt("Please enter", ""));
-        console.log (roundFive);
+const allButtons= document.querySelectorAll('button');
+allButtons.forEach(button=> {
+    button.addEventListener('click', ()=> {
+        theChoice=button.id;
+        let firstRound=playRound(getComputerChoice(), theChoice);
+        let resultText=`${firstRound}.`+` You have ${playerPoints} points.`+` The computer has ${(compPoints)} points.`;
 
-    if ( playerPoints>compPoints) {
-        console.log("You won against the machine!");
-    } else if ( compPoints>playerPoints){
-        console.log("The machine beat you!");
-    } else {
-        console.log("It was a draw!");
-    }
+        let parent=document.querySelector('.result');
+        let divsP=document.createElement('p');
+        divsP.textContent=resultText;
+        parent.appendChild(divsP);
         
+        if (playerPoints===5 || compPoints===5) {
+                if (playerPoints===5) {alert ("You have won!")} else if (compPoints===5) {alert ("The computer has won!")}
+        }
+    })
+})
 
-}
-rounds();
-console.log(playerPoints);
-console.log(compPoints);
+
+console.log(playerSelection);
